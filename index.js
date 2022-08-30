@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
 	res.sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/api/timestamp/:date", function (req, res) {
+app.get("/api/timestamp/:date_string", function (req, res) {
 	res.json({
 		unix: new Date(req.params.date).getTime(),
 		utc: new Date(req.params.date).toUTCString(),
