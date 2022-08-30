@@ -20,6 +20,15 @@ app.get("/", function (req, res) {
 
 app.get("/api/:date", function (req, res) {
 	let passedDate = req.params.date;
+	console.log(passedDate);
+	if (parseInt(passedDate) > 10000) {
+		let date = new Date(parseInt(passedDate));
+		res.json({
+			unix: date.getTime(),
+			utc: date.toUTCString(),
+		});
+	}
+
 	let date = new Date(passedDate);
 	if (date == "Invalid Date") {
 		res.json({ error: "Invalid Date" });
